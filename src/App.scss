@@ -1,0 +1,1062 @@
+// ─── Design Tokens ──────────────────────────────────────────────────────────
+$primary-color: #0d1117;
+$secondary-color: #00b4d8;
+$tertiary-color: #06d6a0;
+$quaternary-color: #b7e4c7;
+$quinary-color: #e8f4f8;
+
+// ─── Breakpoints ────────────────────────────────────────────────────────────
+$bp-xs: 480px;
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+@mixin xs {
+  @media (max-width: #{$bp-xs}) {
+    @content;
+  }
+}
+@mixin sm {
+  @media (max-width: #{$bp-sm}) {
+    @content;
+  }
+}
+@mixin md {
+  @media (max-width: #{$bp-md}) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (max-width: #{$bp-lg}) {
+    @content;
+  }
+}
+@mixin above-md {
+  @media (min-width: #{$bp-md + 1}) {
+    @content;
+  }
+}
+
+// ─── Shared Mixins ───────────────────────────────────────────────────────────
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// ─── Skills ────────────────────────────────────────────────────────────────────
+$html: red;
+$css: blue;
+$javascript: yellow;
+$react: aqua;
+$sql: orange;
+$bootstrap: purple;
+
+// ─── Base ────────────────────────────────────────────────────────────────────
+body {
+  background-color: $primary-color;
+  color: $quinary-color;
+  overflow-x: hidden;
+}
+
+// ─── Navigation ──────────────────────────────────────────────────────────────
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  margin: 16px auto;
+  border-radius: 14px;
+  position: fixed;
+  // keep it centred & never wider than the viewport
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  top: 0;
+  z-index: 1000;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.4s ease,
+    backdrop-filter 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+
+  // ── Glassmorphism state (applied via JS when scrolled) ──────────────────
+  &.glass {
+    background-color: rgba($primary-color, 0.45);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-color: rgba($secondary-color, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  // Brand / logo name
+  h1 {
+    font-size: clamp(14px, 3vw, 22px);
+    white-space: nowrap;
+    margin: 6px 0;
+  }
+
+  // Desktop link list
+  #listNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+    transition: all 0.3s ease;
+
+    a {
+      text-decoration: none;
+      color: $quinary-color;
+      padding: 8px 12px;
+      font-size: clamp(14px, 2vw, 20px);
+      transition: all 0.3s ease-in-out;
+      border-radius: 10px;
+      display: block;
+
+      &:hover {
+        color: $secondary-color;
+        background-color: rgba($quinary-color, 0.15);
+      }
+    }
+  }
+
+  // ── Hamburger button (hidden on desktop) ────────────────────────────────
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+
+    span {
+      display: block;
+      height: 2px;
+      background: $quinary-color;
+      border-radius: 4px;
+      transition: all 0.35s ease;
+      transform-origin: center;
+    }
+
+    // "X" state when menu is open
+    &.open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    &.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    &.open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+  }
+
+  // ── Mobile behaviour ────────────────────────────────────────────────────
+  @include md {
+    border-radius: 10px;
+    padding: 8px 16px;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    .hamburger {
+      display: flex;
+    }
+
+    #listNav {
+      // Hidden by default — slides down when .open is added
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: $primary-color;
+      border-radius: 12px;
+      padding: 12px 0;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease;
+
+      &.open {
+        max-height: 300px;
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 18px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  @include xs {
+    margin: 10px auto;
+    width: calc(100% - 20px);
+
+    h1 {
+      font-size: 14px;
+    }
+  }
+}
+
+// ─── Hero Section ────────────────────────────────────────────────────────────
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 20px 40px; // top padding accounts for fixed nav
+
+  .container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    h1 {
+      font-size: clamp(28px, 5vw, 60px);
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+
+    p {
+      font-size: clamp(16px, 2.5vw, 24px);
+      margin: 0 0 20px;
+      color: $quaternary-color;
+    }
+
+    span {
+      color: $secondary-color;
+    }
+  }
+
+  // ── Responsive stacking ─────────────────────────────────────────────────
+  @include lg {
+    min-height: auto;
+    padding-top: 120px;
+
+    .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 30px;
+    }
+  }
+
+  @include md {
+    padding: 110px 20px 60px;
+
+    .container {
+      gap: 24px;
+    }
+  }
+
+  @include xs {
+    padding: 90px 16px 40px;
+
+    .container {
+      gap: 20px;
+
+      h1 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// ─── CTA Button ──────────────────────────────────────────────────────────────
+#CTA {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: clamp(15px, 2vw, 20px);
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  background-color: $secondary-color;
+  color: $primary-color;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    color: $secondary-color;
+    background-color: $quinary-color;
+    transform: scale(1.08);
+  }
+
+  @include xs {
+    padding: 10px 22px;
+    font-size: 15px;
+  }
+}
+
+// ─── Profile Image ───────────────────────────────────────────────────────────
+#myImg {
+  width: clamp(180px, 30vw, 300px);
+  height: clamp(180px, 30vw, 300px);
+  border-radius: 50%;
+  object-fit: cover;
+  animation: floatImg 2s infinite ease-in-out;
+  box-shadow: 0px 2px 15px aqua;
+  @include xs {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@keyframes floatImg {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+// ─── Skills Section ─────────────────────────────────────────────────────────
+.skills {
+  min-height: 100vh;
+  padding: 100px 20px 80px;
+  transform: skewY(2deg);
+  background-color: $secondary-color;
+
+  .container {
+    transform: skewY(-2deg);
+    text-align: center;
+    color: $primary-color;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 60px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+  }
+
+  .skills-subtitle {
+    font-size: clamp(14px, 1.8vw, 18px);
+    opacity: 0.7;
+    margin: 0 0 32px;
+    color: $primary-color;
+  }
+}
+
+#container-skills {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 16px 0;
+}
+
+// ─── Individual Skill Card ────────────────────────────────────────────
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: $quinary-color;
+  background-color: $primary-color;
+  border-radius: 14px;
+  width: clamp(280px, 42%, 420px);
+  height: 140px;
+  padding: 18px 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  }
+
+  // Name label
+  p {
+    font-size: clamp(15px, 2vw, 20px);
+    font-weight: 600;
+    min-width: 90px;
+    text-align: left;
+    margin: 0;
+  }
+}
+@media (max-width: 425px) {
+  .skill {
+    gap:1px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill {
+    gap: 5px;
+  }
+}
+
+// ─── Icon ─────────────────────────────────────────────────────────────────
+.skill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: drop-shadow(0 2px 6px currentColor);
+  }
+}
+
+// ─── Progress track ───────────────────────────────────────────────────
+.progress {
+  flex: 1;
+  height: 8px;
+  background-color: rgba($quinary-color, 0.15);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+// ─── Percentage badge ──────────────────────────────────────────────
+.skill-percent {
+  font-size: 13px;
+  font-weight: 700;
+  color: $quaternary-color;
+  min-width: 36px;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+// ─── Progress bar: CSS-variable-driven so each bar uses its own target ────
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--target-width, 80%);
+  }
+}
+
+// When the IntersectionObserver fires, .animate is added to .progress-bar
+.progress-bar {
+  width: 0; // start hidden – JS adds .animate to grow it
+  height: 100%;
+  border-radius: 10px;
+  transition: none;
+
+  &.animate {
+    animation: progress 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+// ─── Scroll-Reveal System ─────────────────────────────────────────────────────
+// Base hidden state – defined by data-reveal direction
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+
+  // Apply delay from data-reveal-delay attribute (ms) via inline style fallback
+  // We handle this in CSS by reading the custom property set by JS below, OR
+  // handle it with a small JS enhancement in the hook.
+}
+
+[data-reveal="left"] {
+  transform: translateX(-60px);
+}
+[data-reveal="right"] {
+  transform: translateX(60px);
+}
+[data-reveal="up"] {
+  transform: translateY(50px);
+}
+[data-reveal="down"] {
+  transform: translateY(-50px);
+}
+
+// Revealed state
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+// ─── About Section ─────────────────────────────────────────────────────────
+.about {
+  min-height: 100vh;
+  padding: 100px 20px 80px;
+  background-color: $primary-color;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: $quinary-color;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 60px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+  }
+
+  .about-subtitle {
+    font-size: clamp(14px, 1.8vw, 18px);
+    opacity: 0.7;
+    margin: 0 0 32px;
+    color: $quinary-color;
+  }
+
+  // ── Responsive padding ──────────────────────────────────────────────
+  @include lg {
+    padding: 120px 24px 60px;
+  }
+  @include md {
+    padding: 110px 20px 50px;
+  }
+  @include xs {
+    padding: 90px 16px 40px;
+  }
+}
+
+#container-about {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 40px 0 16px;
+  width: 100%;
+
+  // ── Stack vertically on tablet and below ────────────────────────────
+  @include lg {
+    flex-direction: column;
+    gap: 36px;
+    padding: 30px 0 16px;
+  }
+  @include xs {
+    gap: 24px;
+    padding: 20px 0 16px;
+  }
+}
+
+// ─── About image wrapper ──────────────────────────────────────────────
+.about-img {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+// ─── About text content ───────────────────────────────────────────────
+.about-content {
+  flex: 1;
+  max-width: 640px;
+
+  p {
+    font-size: clamp(15px, 2vw, 26px) !important;
+    line-height: 1.8;
+    text-align: left !important;
+    margin: 0;
+    color: $quinary-color;
+
+    @include md {
+      text-align: center !important;
+      font-size: clamp(14px, 3.5vw, 18px) !important;
+    }
+    @include xs {
+      font-size: 15px !important;
+    }
+  }
+}
+
+// ─── Icon ─────────────────────────────────────────────────────────────────
+.about-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: drop-shadow(0 2px 6px currentColor);
+  }
+}
+
+// ─── Progress track ───────────────────────────────────────────────────
+.progress {
+  flex: 1;
+  height: 8px;
+  background-color: rgba($quinary-color, 0.15);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+// ─── Percentage badge ──────────────────────────────────────────────
+.skill-percent {
+  font-size: 13px;
+  font-weight: 700;
+  color: $quaternary-color;
+  min-width: 36px;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+// ─── Progress bar: CSS-variable-driven so each bar uses its own target ────
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--target-width, 80%);
+  }
+}
+
+// When the IntersectionObserver fires, .animate is added to .progress-bar
+.progress-bar {
+  width: 0; // start hidden – JS adds .animate to grow it
+  height: 100%;
+  border-radius: 10px;
+  transition: none;
+
+  &.animate {
+    animation: progress 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+// ─── Scroll-Reveal System ─────────────────────────────────────────────────────
+// Base hidden state – defined by data-reveal direction
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+
+  // Apply delay from data-reveal-delay attribute (ms) via inline style fallback
+  // We handle this in CSS by reading the custom property set by JS below, OR
+  // handle it with a small JS enhancement in the hook.
+}
+
+[data-reveal="left"] {
+  transform: translateX(-60px);
+}
+[data-reveal="right"] {
+  transform: translateX(60px);
+}
+[data-reveal="up"] {
+  transform: translateY(50px);
+}
+[data-reveal="down"] {
+  transform: translateY(-50px);
+}
+
+// Revealed state
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.AboutIMG {
+  width: clamp(200px, 35vw, 420px);
+  height: clamp(200px, 35vw, 420px);
+  object-fit: cover;
+  border-radius: 10%;
+  display: block;
+
+  @include lg {
+    width: clamp(200px, 50vw, 360px);
+    height: clamp(200px, 50vw, 360px);
+  }
+  @include md {
+    width: clamp(180px, 55vw, 300px);
+    height: clamp(180px, 55vw, 300px);
+  }
+  @include xs {
+    width: clamp(160px, 70vw, 260px);
+    height: clamp(160px, 70vw, 260px);
+  }
+}
+
+// ─── Projects Section ─────────────────────────────────────────────────────────
+.projects {
+  width: 100%;
+  background-color: $secondary-color;
+  color: $primary-color;
+  transform: skewY(-2deg);
+  padding: 80px 0 100px;
+
+  @include lg {
+    margin-top: 8rem;
+    padding: 70px 0 80px;
+  }
+  @include md {
+    margin-top: 6rem;
+    padding: 60px 0 70px;
+  }
+  @include xs {
+    margin-top: 4rem;
+    padding: 50px 0 60px;
+  }
+}
+
+// Counter-skew wrapper keeps content upright
+.projects-inner {
+  transform: skewY(2deg);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// ── Section heading ────────────────────────────────────────────────────────
+.projects-title {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: $primary-color;
+  letter-spacing: -0.02em;
+}
+
+.projects-subtitle {
+  text-align: center;
+  font-size: clamp(14px, 1.8vw, 18px);
+  opacity: 0.65;
+  margin: 0 0 52px;
+  color: $primary-color;
+}
+
+// ── Cards grid ────────────────────────────────────────────────────────────
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  @include md {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  @include xs {
+    gap: 20px;
+  }
+}
+
+// ── Individual card ───────────────────────────────────────────────────────
+.project-card {
+  background-color: $primary-color;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
+    .project-card__overlay {
+      opacity: 1;
+    }
+    .project-card__img {
+      transform: scale(1.06);
+    }
+  }
+}
+
+// ── Image wrapper + overlay ───────────────────────────────────────────────
+.project-card__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.project-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba($primary-color, 0.78);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+// ── Overlay buttons ───────────────────────────────────────────────────────
+.project-card__btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 700;
+  text-decoration: none;
+  background-color: $secondary-color;
+  color: $primary-color;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.06);
+  }
+
+  &--ghost {
+    background-color: transparent;
+    border: 2px solid $secondary-color;
+    color: $secondary-color;
+
+    &:hover {
+      background-color: rgba($secondary-color, 0.15);
+    }
+  }
+}
+
+// ── Card body ─────────────────────────────────────────────────────────────
+.project-card__body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.project-card__title {
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 700;
+  margin: 0;
+  color: $quinary-color;
+}
+
+.project-card__desc {
+  font-size: clamp(13px, 1.4vw, 15px);
+  line-height: 1.65;
+  margin: 0;
+  color: rgba($quinary-color, 0.75);
+  flex: 1;
+}
+
+// ── Tech tags ─────────────────────────────────────────────────────────────
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.project-card__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background-color: rgba($secondary-color, 0.18);
+  color: $secondary-color;
+  border: 1px solid rgba($secondary-color, 0.35);
+}
+
+// ─── Contact Section ────────────────────────────────────────────────────────
+.contact {
+  padding: 100px 20px 80px;
+  background-color: $primary-color;
+  color: $quinary-color;
+
+  .contact-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-size: clamp(28px, 5vw, 56px);
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: $quinary-color;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-subtitle {
+    font-size: clamp(14px, 1.8vw, 18px);
+    opacity: 0.65;
+    margin: 0 0 52px;
+    color: $quinary-color;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: left;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid rgba($secondary-color, 0.2);
+    background-color: rgba($quinary-color, 0.05);
+    color: $quinary-color;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: $secondary-color;
+      background-color: rgba($quinary-color, 0.1);
+      box-shadow: 0 0 0 4px rgba($secondary-color, 0.1);
+    }
+
+    &.input-error {
+      border-color: #ff4d4f;
+      background-color: rgba(255, 77, 79, 0.05);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .error-text {
+    color: #ff4d4f;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 4px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .contact-btn {
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: $secondary-color;
+    color: $primary-color;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-top: 8px;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba($secondary-color, 0.3);
+      background-color: $tertiary-color;
+      color: $primary-color;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─── Footer Section ─────────────────────────────────────────────────────────
+.footer {
+  background-color: darken($primary-color, 2%);
+  border-top: 1px solid rgba($quinary-color, 0.08);
+  padding: 40px 20px;
+  color: $quinary-color;
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    @include md {
+      flex-direction: column-reverse;
+      gap: 24px;
+      text-align: center;
+    }
+  }
+
+  .footer-text {
+    font-size: 15px;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba($quinary-color, 0.05);
+    color: $quinary-color;
+    font-size: 20px;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $primary-color;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 10px 20px rgba($secondary-color, 0.3);
+    }
+  }
+}
