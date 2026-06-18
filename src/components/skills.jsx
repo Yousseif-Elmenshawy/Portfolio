@@ -1,6 +1,6 @@
 import "../App.scss";
 import { useEffect, useRef } from "react";
-import { FaHtml5, FaCss3Alt, FaReact, FaPython } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaReact, FaPython , FaSass } from "react-icons/fa";
 import { SiJavascript, SiMysql, SiBootstrap } from "react-icons/si";
 
 const SKILLS = [
@@ -53,6 +53,13 @@ const SKILLS = [
     icon: <FaPython />,
     color: "#006effff",
   },
+  {
+    id: "sass",
+    name: "Sass",
+    progress: 80,
+    icon: <FaSass />,
+    color: "rgb(250, 6, 189)"
+  }
 ];
 
 export default function Skills() {

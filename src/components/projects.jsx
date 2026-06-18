@@ -3,6 +3,7 @@ import useScrollReveal from "../hooks/useScrollReveal";
 import imgOne from "../imgs/Screenshot 2026-04-02 200503.png";
 import imgTwo from "../imgs/Screenshot 2026-04-02 200558.png";
 import imgThree from "../imgs/Screenshot 2026-04-02 200629.png";
+import imgFour from "../imgs/Edu.png"
 import { Link } from "react-router-dom";
 
 const PROJECTS = [
@@ -33,6 +34,15 @@ const PROJECTS = [
     liveUrl: "https://templates-491e7-36c37.firebaseapp.com/",
     codeUrl: "https://github.com/Yousseif-Elmenshawy/Templates/tree/main/Template%202",
     tags: ["JavaScript", "HTML", "CSS"],
+  },
+  {
+    id: "project-4",
+    title: "EduSpher",
+    description: "Educational platform that you can learn Programming , Network & Cyperscirty , Telecommunication , IT , AI , Digital art",
+    image: imgFour,
+    liveUrl: "https://eduspher-699f6.web.app/",
+    codeUrl: "https://github.com/Yousseif-Elmenshawy/EduSpher---WE-",
+    tags: ["React","Sass","Firebase"]
   },
 ];
 

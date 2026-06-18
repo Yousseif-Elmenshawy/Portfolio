@@ -5,6 +5,7 @@ $tertiary-color: #06d6a0;
 $quaternary-color: #b7e4c7;
 $quinary-color: #e8f4f8;
 
+
 // ─── Breakpoints ────────────────────────────────────────────────────────────
 $bp-xs: 480px;
 $bp-sm: 640px;
@@ -393,7 +394,7 @@ nav {
     box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
   }
 
