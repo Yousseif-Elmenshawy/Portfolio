@@ -29,17 +29,16 @@ export default function About() {
             data-reveal-delay="250"
           >
             <p style={{ textAlign: "left", fontSize: "2rem" }}>
-              I am a front-end developer with experience in building web
-              applications and i am a student in we school for applied
-              technology.
-              <br />
-              I have many project in my github account and firebase, I am in
-              grade two programming department.
-              <br />
-              I am a quick learner and i am always looking for new opportunities
-              to improve my skills.
-              <br />I am a team player and i am always looking for new
-              opportunities to work in a team.
+              Front-End Developer with experience building modern and responsive
+              web applications. Currently a Grade 2 Programming student at WE
+              Applied Technology School. Passionate about software development
+              and continuously improving my skills. Built several web projects
+              available on GitHub and Firebase. Quick learner with a strong
+              interest in exploring new technologies. Enjoy turning ideas into
+              functional and user-friendly applications. Team player who enjoys
+              collaboration and solving problems. Always looking for
+              opportunities to gain real-world experience. Focused on learning,
+              growing, and becoming a better developer.
             </p>
           </div>
         </div>

@@ -4,6 +4,7 @@ import imgOne from "../imgs/Screenshot 2026-04-02 200503.png";
 import imgTwo from "../imgs/Screenshot 2026-04-02 200558.png";
 import imgThree from "../imgs/Screenshot 2026-04-02 200629.png";
 import imgFour from "../imgs/Edu.png"
+import imgFive from "../imgs/brutal.png"
 import { Link } from "react-router-dom";
 
 const PROJECTS = [
@@ -43,6 +44,15 @@ const PROJECTS = [
     liveUrl: "https://eduspher-699f6.web.app/",
     codeUrl: "https://github.com/Yousseif-Elmenshawy/EduSpher---WE-",
     tags: ["React","Sass","Firebase"]
+  },
+  {
+    id: "project-5",
+    title: "Brutal",
+    description: "E-commerce for sale Shoes brands like Adidas , Nike , Puma and Shoes for Kids",
+    image: imgFive,
+    liveUrl: "https://e-commerce-gray-omega-60.vercel.app/",
+    codeUrl: "https://github.com/Yousseif-Elmenshawy/E-commerc",
+    tags: ["React","CSS","Bootstrap"]
   },
 ];
 
