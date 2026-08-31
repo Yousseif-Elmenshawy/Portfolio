@@ -5,6 +5,7 @@ import imgTwo from "../imgs/Screenshot 2026-04-02 200558.png";
 import imgThree from "../imgs/Screenshot 2026-04-02 200629.png";
 import imgFour from "../imgs/Edu.png"
 import imgFive from "../imgs/brutal.png"
+import imgSix from "../imgs/We_English.png"
 import { Link } from "react-router-dom";
 
 const PROJECTS = [
@@ -53,6 +54,15 @@ const PROJECTS = [
     liveUrl: "https://e-commerce-gray-omega-60.vercel.app/",
     codeUrl: "https://github.com/Yousseif-Elmenshawy/E-commerc",
     tags: ["React","CSS","Bootstrap"]
+  },
+  {
+    id: "project-6",
+    title: "We ATS English hup",
+    description: "This is a Website for learning English and improving your skills in English language",
+    image: imgSix,
+    liveUrl: "https://weenglishhup.vercel.app/",
+    codeUrl: "https://github.com/Yousseif-Elmenshawy/We-ATS-Portsaid-English-hup",
+    tags: ["React","CSS","JavaScript"]
   },
 ];
 
