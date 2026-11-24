@@ -9,7 +9,7 @@ export default function Hero() {
         </div>
         <div id="text" data-reveal="left">
           <h1>
-            Yousseif <span>Elshenawy</span>
+            Youssef <span>Elshenawy</span>
           </h1>
           <p>Full-Stack Developer</p>
           <br />
