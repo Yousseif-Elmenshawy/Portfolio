@@ -39,7 +39,7 @@ export default function Contact() {
       <div className="contact-inner">
         <div data-reveal="up">
           <h1 className="contact-title">Contact Me</h1>
-          <p className="contact-subtitle">Get in touch with me</p>
+          <p className="contact-subtitle">This form is not working , Contact me in Whatsapp</p>
         </div>
 
         <form

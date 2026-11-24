@@ -11,7 +11,7 @@ export default function Hero() {
           <h1>
             Yousseif <span>Elshenawy</span>
           </h1>
-          <p>Front End Developer</p>
+          <p>Full-Stack Developer</p>
           <br />
           <a
             href="#contact"

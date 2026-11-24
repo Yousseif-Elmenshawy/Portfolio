@@ -1,6 +1,6 @@
 import "../App.scss";
 import { useEffect, useRef } from "react";
-import { FaHtml5, FaCss3Alt, FaReact, FaPython , FaSass } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaReact, FaPython , FaSass , FaPhp , FaLaravel  } from "react-icons/fa";
 import { SiJavascript, SiMysql, SiBootstrap } from "react-icons/si";
 
 const SKILLS = [
@@ -59,6 +59,20 @@ const SKILLS = [
     progress: 80,
     icon: <FaSass />,
     color: "rgb(250, 6, 189)"
+  },
+  {
+    id: "php",
+    name: "PHP",
+    progress: 70,
+    icon: <FaPhp />,
+    color: "rgb(201, 6, 250)"
+  },
+  {
+    id: "laravel",
+    name: "Laravel",
+    progress: 50,
+    icon: <FaLaravel />,
+    color: "rgb(250, 6, 6)"
   }
 ];
 

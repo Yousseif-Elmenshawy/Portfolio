@@ -6,6 +6,7 @@ import imgThree from "../imgs/Screenshot 2026-04-02 200629.png";
 import imgFour from "../imgs/Edu.png"
 import imgFive from "../imgs/brutal.png"
 import imgSix from "../imgs/We_English.png"
+import imgSeven from "../imgs/Port.png"
 import { Link } from "react-router-dom";
 
 const PROJECTS = [
@@ -63,6 +64,15 @@ const PROJECTS = [
     liveUrl: "https://weenglishhup.vercel.app/",
     codeUrl: "https://github.com/Yousseif-Elmenshawy/We-ATS-Portsaid-English-hup",
     tags: ["React","CSS","JavaScript"]
+  },
+  {
+    id: "project-7",
+    title: "Portfolio for Photographer",
+    description: "This Portfolio for showcase Photographer project with CMS system",
+    image: imgSeven,
+    liveUrl: "https://portoflio-for-photoghrapher.vercel.app/",
+    codeUrl: "#",
+    tags: ["React","CSS","JavaScript","PHP"]
   },
 ];
 

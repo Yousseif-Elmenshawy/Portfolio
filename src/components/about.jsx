@@ -29,11 +29,11 @@ export default function About() {
             data-reveal-delay="250"
           >
             <p style={{ textAlign: "left", fontSize: "2rem" }}>
-              Front-End Developer with experience building modern and responsive
-              web applications. Currently a Grade 2 Programming student at WE
+              Full-Stack Developer with experience building modern and responsive
+              web applications. Currently a Grade 3 Programming student at WE
               Applied Technology School. Passionate about software development
               and continuously improving my skills. Built several web projects
-              available on GitHub and Firebase. Quick learner with a strong
+              available on GitHub. Quick learner with a strong
               interest in exploring new technologies. Enjoy turning ideas into
               functional and user-friendly applications. Team player who enjoys
               collaboration and solving problems. Always looking for
